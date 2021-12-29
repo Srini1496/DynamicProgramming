@@ -39,3 +39,25 @@ class Solution {
         }
     }
 }
+//Method 2
+class Solution {
+    int ans=0;
+    public int countArrangement(int n) {
+        boolean[] visited = new boolean[n+1];
+        helper(1,visited,n);
+        return ans;
+    }
+    public void helper(int k,boolean[] visited,int n){
+        if(k>n){
+            ans++;
+            return;
+        }        
+        for(int i=1;i<=n;i++){            
+          if(!visited[i] && (i%k==0 || k%i==0)){
+              visited[i]=true;
+              helper(k+1,visited,n);
+              visited[i]=false;
+          }
+        }
+    }
+}
